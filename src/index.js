@@ -1,17 +1,25 @@
+// @flow
 import dotenv from 'dotenv';
+import { argv } from 'yargs';
+
 import buildIntrospection from './instrospection';
+import jsonWritter from './writer/json';
 
 try {
   dotenv.config();
   buildIntrospection({
-    client: 'postgres',
-    connection: {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      port: process.env.DB_PORT,
-      database: process.env.DB_DATABASE,
-    },
-  }).then(schemas => console.log(JSON.stringify(schemas, null, 4)));
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+  }).then(schemas =>
+    jsonWritter(
+      {
+        output: argv.output,
+      },
+      schemas,
+    ),
+  );
 } catch (err) {
   console.log(err);
 }

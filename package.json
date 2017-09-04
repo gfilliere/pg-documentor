@@ -4,14 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -L src/index.js --watch . --exec babel-node",
+    "dev": "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch . --exec babel-node",
     "build": "babel src --out-dir dist --copy-files",
     "lint": "eslint src/"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
-    "knex": "^0.13.0",
-    "pg": "^7.3.0"
+    "pg": "^7.3.0",
+    "yargs": "^8.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

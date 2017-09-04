@@ -1,23 +1,22 @@
 // @flow
+import type Schema from '../model/Schema';
 import Table from '../model/Table';
 import Column from '../model/Column';
 
-const getTables = async (pgClient: any) => {
-  const query = pgClient.raw(`SELECT c.oid,
+const getTables = async (pool: any, schema: Schema) => {
+  const tables = await pool.query(`SELECT c.oid,
   n.nspname,
   c.relname,
   c.relkind
 FROM pg_catalog.pg_class c
      LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-WHERE n.nspname ~ '^(movie)$'
+WHERE n.nspname ~ '^(${schema.name})$'
 AND c.relkind = 'r'
 ORDER BY 2, 3;`);
 
-  const tables = await query;
-
   return Promise.all(
     tables.rows.map(async rawTable => {
-      const rawColumns = await pgClient.raw(`
+      const rawColumns = await pool.query(`
       SELECT a.attname,
   pg_catalog.format_type(a.atttypid, a.atttypmod) as type,
   (SELECT substring(pg_catalog.pg_get_expr(d.adbin, d.adrelid) for 128)
@@ -36,12 +35,10 @@ ORDER BY a.attnum;`);
             rawColumn.attnotnull,
           ),
       );
-      console.log(columns);
-      return new Table(rawTable.name, rawTable.owner, columns);
+
+      return new Table(rawTable.nspname, rawTable.relname, columns);
     }),
   );
-
-  // return tables.rows.map(element => );
 };
 
 export default getTables;

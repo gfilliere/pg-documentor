@@ -2,6 +2,7 @@
 import type Schema from '../model/Schema';
 import Table from '../model/Table';
 import Column from '../model/Column';
+import Index from '../model/Index';
 
 const getTables = async (pool: any, schema: Schema) => {
   const tables = await pool.query(`SELECT c.oid,
@@ -35,8 +36,23 @@ ORDER BY a.attnum;`);
             rawColumn.attnotnull,
           ),
       );
-
-      return new Table(rawTable.nspname, rawTable.relname, columns);
+      const rawIndexes = await pool.query(`
+SELECT c2.relname as name, i.indisprimary as isPrimary, i.indisunique isUnique, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true) as definition
+FROM pg_catalog.pg_class c, pg_catalog.pg_class c2, pg_catalog.pg_index i
+  LEFT JOIN pg_catalog.pg_constraint con ON (conrelid = i.indrelid AND conindid = i.indexrelid AND contype IN ('p','u','x'))
+WHERE c.oid = '${rawTable.oid}' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
+ORDER BY i.indisprimary DESC, i.indisunique DESC, c2.relname;
+      `);
+      const indexes = rawIndexes.rows.map(
+        rawIndex =>
+          new Index(
+            rawIndex.name,
+            rawIndex.definition,
+            rawIndex.isprimary,
+            rawIndex.isunique,
+          ),
+      );
+      return new Table(rawTable.nspname, rawTable.relname, columns, indexes);
     }),
   );
 };

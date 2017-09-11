@@ -84,6 +84,21 @@ ORDER BY 1;
         raw => new Trigger(raw.name, raw.definition),
       );
 
+      const inheritedTablesRaw = await pool.query(`
+SELECT c.oid::pg_catalog.regclass regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i 
+WHERE c.oid=i.inhparent AND i.inhrelid = '${rawTable.oid}' ORDER BY inhseqno;
+`);
+      const inheritedTables = inheritedTablesRaw.rows.map(raw => raw.regclass);
+
+      const childTablesRaw = await pool.query(`
+SELECT c.oid::pg_catalog.regclass regclass
+FROM pg_catalog.pg_class c, pg_catalog.pg_inherits i 
+WHERE c.oid=i.inhrelid AND i.inhparent = '${rawTable.oid}'
+ORDER BY c.oid::pg_catalog.regclass::pg_catalog.text;
+`);
+      const childTables = childTablesRaw.rows.map(raw => raw.regclass);
+      console.log(childTablesRaw);
       return new Table(
         rawTable.schema_name,
         rawTable.table_name,
@@ -92,6 +107,8 @@ ORDER BY 1;
         hasReferencesTo,
         isReferencedBy,
         triggers,
+        inheritedTables,
+        childTables,
       );
     }),
   );

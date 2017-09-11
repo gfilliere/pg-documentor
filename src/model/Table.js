@@ -11,7 +11,9 @@ export default class Table {
   indexes: Array<Index>;
   hasReferencesTo: Array<Connection>;
   isReferencedBy: Array<Connection>;
-  triggers: Array<Connection>;
+  triggers: Array<Trigger>;
+  inheritedTables: Array<string>;
+  childTables: Array<string>;
   constructor(
     name: string,
     oid: string,
@@ -20,6 +22,8 @@ export default class Table {
     hasReferencesTo: Array<Connection>,
     isReferencedBy: Array<Connection>,
     triggers: Array<Trigger>,
+    inheritedTables: Array<string>,
+    childTables: Array<string>,
   ) {
     this.name = name;
     this.oid = oid;
@@ -28,5 +32,7 @@ export default class Table {
     this.hasReferencesTo = hasReferencesTo;
     this.isReferencedBy = isReferencedBy;
     this.triggers = triggers;
+    this.inheritedTables = inheritedTables;
+    this.childTables = childTables;
   }
 }

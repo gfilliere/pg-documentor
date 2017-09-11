@@ -3,11 +3,12 @@ import type Schema from '../model/Schema';
 import Table from '../model/Table';
 import Column from '../model/Column';
 import Index from '../model/Index';
+import Connection from '../model/Connection';
 
 const getTables = async (pool: any, schema: Schema) => {
   const tables = await pool.query(`SELECT c.oid,
-  n.nspname,
-  c.relname,
+  n.nspname as schema_name,
+  c.relname as table_name,
   c.relkind
 FROM pg_catalog.pg_class c
      LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
@@ -52,7 +53,45 @@ ORDER BY i.indisprimary DESC, i.indisunique DESC, c2.relname;
             rawIndex.isunique,
           ),
       );
-      return new Table(rawTable.nspname, rawTable.relname, columns, indexes);
+
+      const hasReferencesToRaw = await pool.query(`
+SELECT  confrelid::pg_catalog.regclass as connection, conname as name,
+  pg_catalog.pg_get_constraintdef(r.oid, true) as definition
+FROM pg_catalog.pg_constraint r
+WHERE r.conrelid = '${rawTable.oid}' AND r.contype = 'f' ORDER BY 1;
+      `);
+      const hasReferencesTo = hasReferencesToRaw.rows.map(
+        rawRef =>
+          new Connection(
+            `${rawTable.schema_name}.${rawTable.table_name}`,
+            rawRef.connection,
+            rawRef.name,
+            rawRef.definition,
+          ),
+      );
+      const isReferencedByRaw = await pool.query(`
+SELECT conrelid::pg_catalog.regclass as connection, conname as name, 
+  pg_catalog.pg_get_constraintdef(c.oid, true) as definition
+FROM pg_catalog.pg_constraint c
+WHERE c.confrelid = '${rawTable.oid}' AND c.contype = 'f' ORDER BY 1;
+      `);
+      const isReferencedBy = isReferencedByRaw.rows.map(
+        rawRef =>
+          new Connection(
+            rawRef.connection,
+            `${rawTable.schema_name}.${rawTable.table_name}`,
+            rawRef.name,
+            rawRef.definition,
+          ),
+      );
+      return new Table(
+        rawTable.schema_name,
+        rawTable.table_name,
+        columns,
+        indexes,
+        hasReferencesTo,
+        isReferencedBy,
+      );
     }),
   );
 };

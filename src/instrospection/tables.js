@@ -4,6 +4,7 @@ import Table from '../model/Table';
 import Column from '../model/Column';
 import Index from '../model/Index';
 import Connection from '../model/Connection';
+import Trigger from '../model/Trigger';
 
 const getTables = async (pool: any, schema: Schema) => {
   const tables = await pool.query(`SELECT c.oid,
@@ -29,13 +30,7 @@ FROM pg_catalog.pg_attribute a
 WHERE a.attrelid = '${rawTable.oid}' AND a.attnum > 0 AND NOT a.attisdropped
 ORDER BY a.attnum;`);
       const columns = rawColumns.rows.map(
-        rawColumn =>
-          new Column(
-            rawColumn.attname,
-            rawColumn.type,
-            rawColumn.default,
-            rawColumn.attnotnull,
-          ),
+        raw => new Column(raw.attname, raw.type, raw.default, raw.attnotnull),
       );
       const rawIndexes = await pool.query(`
 SELECT c2.relname as name, i.indisprimary as isPrimary, i.indisunique isUnique, pg_catalog.pg_get_indexdef(i.indexrelid, 0, true) as definition
@@ -45,13 +40,7 @@ WHERE c.oid = '${rawTable.oid}' AND c.oid = i.indrelid AND i.indexrelid = c2.oid
 ORDER BY i.indisprimary DESC, i.indisunique DESC, c2.relname;
       `);
       const indexes = rawIndexes.rows.map(
-        rawIndex =>
-          new Index(
-            rawIndex.name,
-            rawIndex.definition,
-            rawIndex.isprimary,
-            rawIndex.isunique,
-          ),
+        raw => new Index(raw.name, raw.definition, raw.isprimary, raw.isunique),
       );
 
       const hasReferencesToRaw = await pool.query(`
@@ -61,12 +50,12 @@ FROM pg_catalog.pg_constraint r
 WHERE r.conrelid = '${rawTable.oid}' AND r.contype = 'f' ORDER BY 1;
       `);
       const hasReferencesTo = hasReferencesToRaw.rows.map(
-        rawRef =>
+        raw =>
           new Connection(
             `${rawTable.schema_name}.${rawTable.table_name}`,
-            rawRef.connection,
-            rawRef.name,
-            rawRef.definition,
+            raw.connection,
+            raw.name,
+            raw.definition,
           ),
       );
       const isReferencedByRaw = await pool.query(`
@@ -76,14 +65,25 @@ FROM pg_catalog.pg_constraint c
 WHERE c.confrelid = '${rawTable.oid}' AND c.contype = 'f' ORDER BY 1;
       `);
       const isReferencedBy = isReferencedByRaw.rows.map(
-        rawRef =>
+        raw =>
           new Connection(
-            rawRef.connection,
+            raw.connection,
             `${rawTable.schema_name}.${rawTable.table_name}`,
-            rawRef.name,
-            rawRef.definition,
+            raw.name,
+            raw.definition,
           ),
       );
+
+      const triggersRaw = await pool.query(`
+SELECT t.tgname as name, pg_catalog.pg_get_triggerdef(t.oid, true) definition
+FROM pg_catalog.pg_trigger t
+WHERE t.tgrelid = '${rawTable.oid}' AND (NOT t.tgisinternal OR (t.tgisinternal AND t.tgenabled = 'D'))
+ORDER BY 1;
+      `);
+      const triggers = triggersRaw.rows.map(
+        raw => new Trigger(raw.name, raw.definition),
+      );
+
       return new Table(
         rawTable.schema_name,
         rawTable.table_name,
@@ -91,6 +91,7 @@ WHERE c.confrelid = '${rawTable.oid}' AND c.contype = 'f' ORDER BY 1;
         indexes,
         hasReferencesTo,
         isReferencedBy,
+        triggers,
       );
     }),
   );

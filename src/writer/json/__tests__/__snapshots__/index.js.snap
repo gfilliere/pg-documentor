@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsonwritter standard JSON output 1`] = `
+"[
+  {
+    \\"name\\": \\"abstract\\",
+    \\"owner\\": \\"postgres\\",
+    \\"tables\\": [
+      {
+        \\"name\\": \\"abstract\\",
+        \\"oid\\": \\"element\\",
+        \\"columns\\": [
+          {
+            \\"name\\": \\"active\\",
+            \\"type\\": \\"boolean\\",
+            \\"defaultValue\\": \\"false\\",
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"jsonb\\",
+            \\"defaultValue\\": \\"'{}'::jsonb\\",
+            \\"notNull\\": false
+          }
+        ],
+        \\"indexes\\": [],
+        \\"hasReferencesTo\\": [],
+        \\"isReferencedBy\\": [],
+        \\"triggers\\": [],
+        \\"inheritedTables\\": [],
+        \\"childTables\\": [
+          \\"movie.movie\\",
+          \\"movie.movie_has_image\\",
+          \\"media.image\\"
+        ]
+      }
+    ]
+  },
+  {
+    \\"name\\": \\"movie\\",
+    \\"owner\\": \\"postgres\\",
+    \\"tables\\": [
+      {
+        \\"name\\": \\"movie\\",
+        \\"oid\\": \\"movie\\",
+        \\"columns\\": [
+          {
+            \\"name\\": \\"active\\",
+            \\"type\\": \\"boolean\\",
+            \\"defaultValue\\": \\"false\\",
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"jsonb\\",
+            \\"defaultValue\\": \\"'{}'::jsonb\\",
+            \\"notNull\\": false
+          },
+          {
+            \\"name\\": \\"id\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"gid\\",
+            \\"type\\": \\"global_id\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"title\\",
+            \\"type\\": \\"text\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"id_poster\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          }
+        ],
+        \\"indexes\\": [
+          {
+            \\"name\\": \\"movie_pkey\\",
+            \\"definition\\": \\"CREATE UNIQUE INDEX movie_pkey ON movie.movie USING btree (id)\\",
+            \\"primary\\": true,
+            \\"unique\\": true
+          },
+          {
+            \\"name\\": \\"movie_movie_gid_idx\\",
+            \\"definition\\": \\"CREATE INDEX movie_movie_gid_idx ON movie.movie USING btree (gid)\\",
+            \\"primary\\": false,
+            \\"unique\\": false
+          }
+        ],
+        \\"hasReferencesTo\\": [
+          {
+            \\"referer\\": \\"movie.movie\\",
+            \\"referee\\": \\"media.image\\",
+            \\"connectionName\\": \\"movie_id_poster_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_poster) REFERENCES media.image(id)\\"
+          }
+        ],
+        \\"isReferencedBy\\": [
+          {
+            \\"referer\\": \\"movie.movie_has_image\\",
+            \\"referee\\": \\"movie.movie\\",
+            \\"connectionName\\": \\"movie_has_image_id_movie_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_movie) REFERENCES movie.movie(id)\\"
+          }
+        ],
+        \\"triggers\\": [
+          {
+            \\"name\\": \\"movie_movie_compute_gid\\",
+            \\"definition\\": \\"CREATE TRIGGER movie_movie_compute_gid BEFORE INSERT OR UPDATE ON movie.movie FOR EACH ROW EXECUTE PROCEDURE abstract.compute_gid()\\"
+          }
+        ],
+        \\"inheritedTables\\": [
+          \\"abstract.element\\"
+        ],
+        \\"childTables\\": []
+      },
+      {
+        \\"name\\": \\"movie\\",
+        \\"oid\\": \\"movie_has_image\\",
+        \\"columns\\": [
+          {
+            \\"name\\": \\"active\\",
+            \\"type\\": \\"boolean\\",
+            \\"defaultValue\\": \\"false\\",
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"jsonb\\",
+            \\"defaultValue\\": \\"'{}'::jsonb\\",
+            \\"notNull\\": false
+          },
+          {
+            \\"name\\": \\"id_movie\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"id_image\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"rank\\",
+            \\"type\\": \\"integer\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          }
+        ],
+        \\"indexes\\": [
+          {
+            \\"name\\": \\"movie_has_image_pkey\\",
+            \\"definition\\": \\"CREATE UNIQUE INDEX movie_has_image_pkey ON movie.movie_has_image USING btree (id_movie, id_image)\\",
+            \\"primary\\": true,
+            \\"unique\\": true
+          }
+        ],
+        \\"hasReferencesTo\\": [
+          {
+            \\"referer\\": \\"movie.movie_has_image\\",
+            \\"referee\\": \\"media.image\\",
+            \\"connectionName\\": \\"movie_has_image_id_image_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_image) REFERENCES media.image(id)\\"
+          },
+          {
+            \\"referer\\": \\"movie.movie_has_image\\",
+            \\"referee\\": \\"movie.movie\\",
+            \\"connectionName\\": \\"movie_has_image_id_movie_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_movie) REFERENCES movie.movie(id)\\"
+          }
+        ],
+        \\"isReferencedBy\\": [],
+        \\"triggers\\": [],
+        \\"inheritedTables\\": [
+          \\"abstract.element\\"
+        ],
+        \\"childTables\\": []
+      }
+    ]
+  },
+  {
+    \\"name\\": \\"media\\",
+    \\"owner\\": \\"postgres\\",
+    \\"tables\\": [
+      {
+        \\"name\\": \\"media\\",
+        \\"oid\\": \\"image\\",
+        \\"columns\\": [
+          {
+            \\"name\\": \\"active\\",
+            \\"type\\": \\"boolean\\",
+            \\"defaultValue\\": \\"false\\",
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"jsonb\\",
+            \\"defaultValue\\": \\"'{}'::jsonb\\",
+            \\"notNull\\": false
+          },
+          {
+            \\"name\\": \\"id\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"gid\\",
+            \\"type\\": \\"global_id\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"title\\",
+            \\"type\\": \\"text\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"alt\\",
+            \\"type\\": \\"text\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          },
+          {
+            \\"name\\": \\"path\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": true
+          }
+        ],
+        \\"indexes\\": [
+          {
+            \\"name\\": \\"image_pkey\\",
+            \\"definition\\": \\"CREATE UNIQUE INDEX image_pkey ON media.image USING btree (id)\\",
+            \\"primary\\": true,
+            \\"unique\\": true
+          },
+          {
+            \\"name\\": \\"image_path_key\\",
+            \\"definition\\": \\"CREATE UNIQUE INDEX image_path_key ON media.image USING btree (path)\\",
+            \\"primary\\": false,
+            \\"unique\\": true
+          },
+          {
+            \\"name\\": \\"media_image_gid_idx\\",
+            \\"definition\\": \\"CREATE INDEX media_image_gid_idx ON media.image USING btree (gid)\\",
+            \\"primary\\": true,
+            \\"unique\\": true
+          }
+        ],
+        \\"hasReferencesTo\\": [],
+        \\"isReferencedBy\\": [
+          {
+            \\"referer\\": \\"movie.movie_has_image\\",
+            \\"referee\\": \\"media.image\\",
+            \\"connectionName\\": \\"movie_has_image_id_image_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_image) REFERENCES media.image(id)\\"
+          },
+          {
+            \\"referer\\": \\"movie.movie_has_image\\",
+            \\"referee\\": \\"media.image\\",
+            \\"connectionName\\": \\"movie_id_poster_fkey\\",
+            \\"definition\\": \\"FOREIGN KEY (id_poster) REFERENCES media.image(id)\\"
+          }
+        ],
+        \\"triggers\\": [
+          {
+            \\"name\\": \\"media_image_compute_gid\\",
+            \\"definition\\": \\"CREATE TRIGGER media_image_compute_gid BEFORE INSERT OR UPDATE ON media.image FOR EACH ROW EXECUTE PROCEDURE abstract.compute_gid()\\"
+          }
+        ],
+        \\"inheritedTables\\": [
+          \\"abstract.element\\"
+        ],
+        \\"childTables\\": []
+      }
+    ]
+  }
+]"
+`;

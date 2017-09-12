@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch . --exec babel-node",
+    "dev": "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch src/ --exec babel-node",
+    "test": "jest",
     "build": "babel src --out-dir dist --copy-files",
     "lint": "eslint src/"
   },
@@ -24,6 +25,9 @@
     "eslint-config-prettier": "^2.4.0",
     "eslint-plugin-import": "^2.7.0",
     "flow-bin": "^0.54.0",
+    "jest": "^21.0.2",
+    "memfs": "^2.5.4",
+    "memory-fs": "^0.4.1",
     "nodemon": "^1.11.0",
     "prettier": "^1.6.1"
   }

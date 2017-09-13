@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateTable a file for the table is created 1`] = `
+"+++
+title = \\"movie\\"
+description = \\"Structure of table movie\\"
++++
+
+Column | Type | Modifiers
+----|----|----
+active | boolean | not null default false
+data | jsonb | default '{}'::jsonb
+id | bigint | not null
+gid | global_id | not null
+title | text | not null
+id_poster | bigint | not null
+
+Indexes:
+- __movie_pkey__: CREATE UNIQUE INDEX movie_pkey ON movie.movie USING btree (id)
+- __movie_movie_gid_idx__: CREATE INDEX movie_movie_gid_idx ON movie.movie USING btree (gid)
+
+Foreign-key constraints:
+- __movie_id_poster_fkey__: FOREIGN KEY (id_poster) REFERENCES media.image(id)
+
+Referenced by:
+- TABLE movie.movie_has_image CONSTRAINT __movie_has_image_id_movie_fkey__: FOREIGN KEY (id_movie) REFERENCES movie.movie(id)
+
+Triggers:
+- __movie_movie_compute_gid__ : CREATE TRIGGER movie_movie_compute_gid BEFORE INSERT OR UPDATE ON movie.movie FOR EACH ROW EXECUTE PROCEDURE abstract.compute_gid()
+
+Inherits:
+- abstract.element
+"
+`;

@@ -1,6 +1,4 @@
 // @flow
-import { promisify } from 'util';
-
 import fs from 'fs';
 import path from 'path';
 import rimraf from 'rimraf';
@@ -16,17 +14,19 @@ const deleteDirectory = directory =>
       if (err) {
         return reject(err);
       }
-      resolve();
+      return resolve();
     });
   });
+
+const generateSchema = (schema, destination) => {
+  const schemaDirectory = path.join(destination, schema.name);
+  fs.mkdirSync(schemaDirectory);
+};
 
 export default async (config: configShape, schemas: Array<Schema>) => {
   // clean directory
   await deleteDirectory(config.output);
   // recreate folder
   fs.mkdirSync(config.output);
-  schemas.forEach(schema => {
-    const schemaDirectory = path.join(config.output, schema.name);
-    fs.mkdirSync(schemaDirectory);
-  });
+  schemas.forEach(schema => generateSchema(schema, config.output));
 };

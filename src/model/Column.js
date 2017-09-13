@@ -4,7 +4,12 @@ export default class Column {
   type: string;
   defaultValue: string;
   notNull: string;
-  constructor(name, type, defaultValue, notNull) {
+  constructor(
+    name: string,
+    type: string,
+    defaultValue: string,
+    notNull: string,
+  ) {
     this.name = name;
     this.type = type;
     this.defaultValue = defaultValue;

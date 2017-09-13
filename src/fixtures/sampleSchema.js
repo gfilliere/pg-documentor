@@ -179,3 +179,13 @@ const imageTable = new Table(
 mediaSchema.setTables([imageTable]);
 
 export default [abstractSchema, movieSchema, mediaSchema];
+
+export {
+  abstractSchema,
+  movieSchema,
+  mediaSchema,
+  elementTable,
+  movieTable,
+  movieHasImageTable,
+  imageTable,
+};

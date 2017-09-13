@@ -10,4 +10,4 @@ type configShape = {
 const writeToFile = promisify(fs.writeFile);
 
 export default (config: configShape, schemas: Array<Schema>) =>
-  writeToFile(config.output, JSON.stringify(schemas, null, 2));
+  writeToFile(config.output, JSON.stringify(schemas, null, 2), 'utf8');

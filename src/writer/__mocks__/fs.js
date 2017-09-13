@@ -1,3 +1,1 @@
-import { fs } from 'memfs';
-
-export default fs;
+module.exports = require('memfs').fs;

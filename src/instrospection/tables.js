@@ -98,7 +98,7 @@ WHERE c.oid=i.inhrelid AND i.inhparent = '${rawTable.oid}'
 ORDER BY c.oid::pg_catalog.regclass::pg_catalog.text;
 `);
       const childTables = childTablesRaw.rows.map(raw => raw.regclass);
-      console.log(childTablesRaw);
+
       return new Table(
         rawTable.schema_name,
         rawTable.table_name,

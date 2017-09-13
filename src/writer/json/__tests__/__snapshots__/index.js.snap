@@ -7,8 +7,8 @@ exports[`jsonwritter standard JSON output 1`] = `
     \\"owner\\": \\"postgres\\",
     \\"tables\\": [
       {
-        \\"name\\": \\"abstract\\",
-        \\"oid\\": \\"element\\",
+        \\"schemaName\\": \\"abstract\\",
+        \\"name\\": \\"element\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -41,8 +41,8 @@ exports[`jsonwritter standard JSON output 1`] = `
     \\"owner\\": \\"postgres\\",
     \\"tables\\": [
       {
+        \\"schemaName\\": \\"movie\\",
         \\"name\\": \\"movie\\",
-        \\"oid\\": \\"movie\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -123,8 +123,8 @@ exports[`jsonwritter standard JSON output 1`] = `
         \\"childTables\\": []
       },
       {
-        \\"name\\": \\"movie\\",
-        \\"oid\\": \\"movie_has_image\\",
+        \\"schemaName\\": \\"movie\\",
+        \\"name\\": \\"movie_has_image\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -193,8 +193,8 @@ exports[`jsonwritter standard JSON output 1`] = `
     \\"owner\\": \\"postgres\\",
     \\"tables\\": [
       {
-        \\"name\\": \\"media\\",
-        \\"oid\\": \\"image\\",
+        \\"schemaName\\": \\"media\\",
+        \\"name\\": \\"image\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",

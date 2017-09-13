@@ -5,8 +5,8 @@ import type Connection from './Connection';
 import type Trigger from './Trigger';
 
 export default class Table {
+  schemaName: string;
   name: string;
-  oid: string;
   columns: Array<Column>;
   indexes: Array<Index>;
   hasReferencesTo: Array<Connection>;
@@ -15,8 +15,8 @@ export default class Table {
   inheritedTables: Array<string>;
   childTables: Array<string>;
   constructor(
+    schemaName: string,
     name: string,
-    oid: string,
     columns: Array<Column>,
     indexes: Array<Index>,
     hasReferencesTo: Array<Connection>,
@@ -25,8 +25,8 @@ export default class Table {
     inheritedTables: Array<string>,
     childTables: Array<string>,
   ) {
+    this.schemaName = schemaName;
     this.name = name;
-    this.oid = oid;
     this.columns = columns;
     this.indexes = indexes;
     this.hasReferencesTo = hasReferencesTo;

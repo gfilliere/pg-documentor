@@ -4,6 +4,7 @@ import { argv } from 'yargs';
 
 import buildIntrospection from './instrospection';
 import jsonWritter from './writer/json';
+import hugoWritter from './writer/hugo';
 
 try {
   dotenv.config();
@@ -13,14 +14,15 @@ try {
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE,
   })
-    .then(schemas =>
-      jsonWritter(
-        {
-          output: argv.output,
-        },
-        schemas,
-      ),
-    )
+    .then(schemas => {
+      switch (argv.format) {
+        case 'hugo':
+          return hugoWritter({ output: argv.output }, schemas);
+
+        default:
+          return jsonWritter({ output: argv.output }, schemas);
+      }
+    })
     .then(console.log('done'));
 } catch (err) {
   console.log(err);

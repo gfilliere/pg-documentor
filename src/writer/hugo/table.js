@@ -35,6 +35,7 @@ const renderList = (header: string, items: Array<any>, renderer: Function) => {
     return '';
   }
   return `${header}:
+
 ${markdownList(items.map(renderer))}
 `;
 };

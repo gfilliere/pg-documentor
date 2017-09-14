@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch src/ --exec babel-node",
-    "test": "jest",
+    "dev":
+      "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch src/ --exec babel-node",
+    "test": "jest src/",
     "build": "babel src --out-dir dist --copy-files",
     "lint": "eslint src/"
   },

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateSchema an _index.md is generated and valid 1`] = `
+"+++
+title = \\"movie\\"
+description = \\"Content of the movie schema\\"
+alwaysopen = false
++++
+
+
+- movie
+- movie_has_image
+    "
+`;

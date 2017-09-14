@@ -23,7 +23,9 @@ try {
           return jsonWritter({ output: argv.output }, schemas);
       }
     })
-    .then(console.log('done'));
+    .then(() => {
+      console.log('done');
+    });
 } catch (err) {
   console.log(err);
 }

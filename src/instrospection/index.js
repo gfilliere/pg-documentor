@@ -12,5 +12,8 @@ export default async function buildInstrospection(setup: any) {
       schema.setTables(await getTables(pool, schema));
       return schema;
     }),
-  );
+  ).then(completeSchemas => {
+    pool.end();
+    return completeSchemas;
+  });
 }

@@ -9,7 +9,7 @@ export default function linkToTable(
   let name = '';
   if (typeof table === 'string') {
     const parts = table.match(/([a-zA-Z0-9]+)\."?([a-zA-Z0-9_]+)+"?/);
-    if (parts === null) {
+    if (parts === null || parts === undefined) {
       throw new Error(`Invalid regclass provided : ${table}`);
     }
     [, schemaName, name] = parts;

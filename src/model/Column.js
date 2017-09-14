@@ -2,12 +2,12 @@
 export default class Column {
   name: string;
   type: string;
-  defaultValue: string;
+  defaultValue: ?string;
   notNull: string;
   constructor(
     name: string,
     type: string,
-    defaultValue: string,
+    defaultValue: ?string,
     notNull: string,
   ) {
     this.name = name;

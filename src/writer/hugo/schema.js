@@ -7,6 +7,7 @@ import type Table from '../../model/Table';
 import generateTable from './table';
 import generateFrontmatter from './utils/frontmatter';
 import markdownList from './utils/markdownList';
+import linkToTable from './utils/linkToTable';
 
 export default (schema: Schema, destination: string) => {
   const schemaDirectory = path.join(destination, schema.name);
@@ -21,7 +22,7 @@ export default (schema: Schema, destination: string) => {
     path.join(schemaDirectory, '_index.md'),
     `${frontmatter}
 
-${markdownList(schema.tables.map((table: Table) => table.name))}
+${markdownList(schema.tables.map((table: Table) => linkToTable(table)))}
     `,
     'utf8',
   );

@@ -15,8 +15,8 @@ const elementTable = new Table(
   'abstract',
   'element',
   [
-    new Column('active', 'boolean', 'false', true),
-    new Column('data', 'jsonb', `'{}'::jsonb`, false),
+    new Column('active', 'boolean', 'false', 'true'),
+    new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
   ],
   [],
   [],
@@ -32,12 +32,12 @@ const movieTable = new Table(
   'movie',
   'movie',
   [
-    new Column('active', 'boolean', 'false', true),
-    new Column('data', 'jsonb', `'{}'::jsonb`, false),
-    new Column('id', 'bigint', null, true),
-    new Column('gid', 'global_id', null, true),
-    new Column('title', 'text', null, true),
-    new Column('id_poster', 'bigint', null, true),
+    new Column('active', 'boolean', 'false', 'true'),
+    new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
+    new Column('id', 'bigint', null, 'true'),
+    new Column('gid', 'global_id', null, 'true'),
+    new Column('title', 'text', null, 'true'),
+    new Column('id_poster', 'bigint', null, 'true'),
   ],
   [
     new Index(
@@ -83,11 +83,11 @@ const movieHasImageTable = new Table(
   'movie',
   'movie_has_image',
   [
-    new Column('active', 'boolean', 'false', true),
-    new Column('data', 'jsonb', `'{}'::jsonb`, false),
-    new Column('id_movie', 'bigint', null, true),
-    new Column('id_image', 'bigint', null, true),
-    new Column('rank', 'integer', null, true),
+    new Column('active', 'boolean', 'false', 'true'),
+    new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
+    new Column('id_movie', 'bigint', null, 'true'),
+    new Column('id_image', 'bigint', null, 'true'),
+    new Column('rank', 'integer', null, 'true'),
   ],
   [
     new Index(
@@ -123,13 +123,13 @@ const imageTable = new Table(
   'media',
   'image',
   [
-    new Column('active', 'boolean', 'false', true),
-    new Column('data', 'jsonb', `'{}'::jsonb`, false),
-    new Column('id', 'bigint', null, true),
-    new Column('gid', 'global_id', null, true),
-    new Column('title', 'text', null, true),
-    new Column('alt', 'text', null, true),
-    new Column('path', 'bigint', null, true),
+    new Column('active', 'boolean', 'false', 'true'),
+    new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
+    new Column('id', 'bigint', null, 'true'),
+    new Column('gid', 'global_id', null, 'true'),
+    new Column('title', 'text', null, 'true'),
+    new Column('alt', 'text', null, 'true'),
+    new Column('path', 'bigint', null, 'true'),
   ],
   [
     new Index(

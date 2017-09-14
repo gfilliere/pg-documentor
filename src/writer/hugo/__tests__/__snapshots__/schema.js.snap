@@ -8,7 +8,7 @@ alwaysopen = false
 +++
 
 
-- movie
-- movie_has_image
+- [movie.movie]({{< ref \\"movie/movie.md\\" >}})
+- [movie.movie_has_image]({{< ref \\"movie/movie_has_image.md\\" >}})
     "
 `;

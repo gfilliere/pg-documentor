@@ -8,7 +8,8 @@
       "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch src/ --exec babel-node",
     "test": "jest src/",
     "build": "babel src --out-dir dist --copy-files",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "flow-check": "flow check src"
   },
   "dependencies": {
     "dotenv": "^4.0.0",

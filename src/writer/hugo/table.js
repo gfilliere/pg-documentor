@@ -12,6 +12,7 @@ import type Trigger from '../../model/Trigger';
 import generateFrontmatter from './utils/frontmatter';
 import markdownTable from './utils/markdownTable';
 import markdownList from './utils/markdownList';
+import linkToTable from './utils/linkToTable';
 
 const writeToFile = promisify(fs.writeFile);
 
@@ -51,7 +52,8 @@ const renderFK = refs =>
   renderList(
     'Foreign-key constraints',
     refs,
-    (ref: Connection) => `__${ref.connectionName}__: ${ref.definition}`,
+    (ref: Connection) =>
+      `${linkToTable(ref.referee, ref.connectionName)}: ${ref.definition}`,
   );
 
 const renderReferences = refs =>
@@ -59,7 +61,9 @@ const renderReferences = refs =>
     'Referenced by',
     refs,
     (ref: Connection) =>
-      `TABLE ${ref.referer} CONSTRAINT __${ref.connectionName}__: ${ref.definition}`,
+      `TABLE ${linkToTable(
+        ref.referer,
+      )} CONSTRAINT __${ref.connectionName}__: ${ref.definition}`,
   );
 
 const renderTriggers = triggers =>
@@ -70,10 +74,10 @@ const renderTriggers = triggers =>
   );
 
 const renderInherited = tables =>
-  renderList('Inherits', tables, (table: string) => table);
+  renderList('Inherits', tables, (table: string) => linkToTable(table));
 
 const renderChildTables = tables =>
-  renderList('Child Tables', tables, (table: string) => table);
+  renderList('Child Tables', tables, (table: string) => linkToTable(table));
 
 const renderTableBody = table =>
   [

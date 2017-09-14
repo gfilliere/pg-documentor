@@ -22,11 +22,11 @@ Indexes:
 
 Foreign-key constraints:
 
-- __movie_id_poster_fkey__: FOREIGN KEY (id_poster) REFERENCES media.image(id)
+- [movie_id_poster_fkey]({{< ref \\"media/image.md\\" >}}): FOREIGN KEY (id_poster) REFERENCES media.image(id)
 
 Referenced by:
 
-- TABLE movie.movie_has_image CONSTRAINT __movie_has_image_id_movie_fkey__: FOREIGN KEY (id_movie) REFERENCES movie.movie(id)
+- TABLE [movie.movie_has_image]({{< ref \\"movie/movie_has_image.md\\" >}}) CONSTRAINT __movie_has_image_id_movie_fkey__: FOREIGN KEY (id_movie) REFERENCES movie.movie(id)
 
 Triggers:
 
@@ -34,6 +34,6 @@ Triggers:
 
 Inherits:
 
-- abstract.element
+- [abstract.element]({{< ref \\"abstract/element.md\\" >}})
 "
 `;

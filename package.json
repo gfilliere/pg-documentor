@@ -4,20 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev":
-      "nodemon -L src/index.js --output ~/allocine/pg-documentor/test.json --watch src/ --exec babel-node",
+    "dev": "babel-node src/index.js",
     "test": "jest src/",
     "build": "babel src --out-dir dist --copy-files",
     "lint": "eslint src/",
     "flow-check": "flow check src"
   },
   "dependencies": {
+    "commander": "^2.11.0",
     "dotenv": "^4.0.0",
     "js-yaml": "^3.10.0",
     "pg": "^7.3.0",
     "rimraf": "^2.6.2",
-    "toml-js": "^0.0.8",
-    "yargs": "^8.0.2"
+    "toml-js": "^0.0.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

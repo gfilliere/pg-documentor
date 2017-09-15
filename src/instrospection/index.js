@@ -2,6 +2,7 @@
 import { Pool } from 'pg';
 import getSchemas from './schemas';
 import getTables from './tables';
+import getViews from './views';
 
 export default async function buildInstrospection(
   setup: any,
@@ -13,6 +14,7 @@ export default async function buildInstrospection(
   return Promise.all(
     schemas.map(async schema => {
       schema.setTables(await getTables(pool, schema));
+      schema.setViews(await getViews(pool, schema));
       return schema;
     }),
   ).then(completeSchemas => {

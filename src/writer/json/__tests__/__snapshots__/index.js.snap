@@ -14,13 +14,13 @@ exports[`jsonwritter standard JSON output 1`] = `
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
             \\"defaultValue\\": \\"false\\",
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
-            \\"notNull\\": false
+            \\"notNull\\": \\"false\\"
           }
         ],
         \\"indexes\\": [],
@@ -48,37 +48,37 @@ exports[`jsonwritter standard JSON output 1`] = `
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
             \\"defaultValue\\": \\"false\\",
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
-            \\"notNull\\": false
+            \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"gid\\",
             \\"type\\": \\"global_id\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"title\\",
             \\"type\\": \\"text\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"id_poster\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           }
         ],
         \\"indexes\\": [
@@ -130,31 +130,31 @@ exports[`jsonwritter standard JSON output 1`] = `
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
             \\"defaultValue\\": \\"false\\",
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
-            \\"notNull\\": false
+            \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id_movie\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"id_image\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"rank\\",
             \\"type\\": \\"integer\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           }
         ],
         \\"indexes\\": [
@@ -200,43 +200,43 @@ exports[`jsonwritter standard JSON output 1`] = `
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
             \\"defaultValue\\": \\"false\\",
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
-            \\"notNull\\": false
+            \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"gid\\",
             \\"type\\": \\"global_id\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"title\\",
             \\"type\\": \\"text\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"alt\\",
             \\"type\\": \\"text\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"path\\",
             \\"type\\": \\"bigint\\",
             \\"defaultValue\\": null,
-            \\"notNull\\": true
+            \\"notNull\\": \\"true\\"
           }
         ],
         \\"indexes\\": [

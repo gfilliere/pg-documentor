@@ -9,7 +9,7 @@ description = \\"Structure of table movie\\"
 Column | Type | Modifiers
 ----|----|----
 active | boolean | not null default false
-data | jsonb | default '{}'::jsonb
+data | jsonb | not null default '{}'::jsonb
 id | bigint | not null
 gid | global_id | not null
 title | text | not null

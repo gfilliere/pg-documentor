@@ -7,8 +7,6 @@ description = \\"Content of the movie schema\\"
 alwaysopen = false
 +++
 
-
-- [movie.movie]({{< ref \\"movie/movie.md\\" >}})
-- [movie.movie_has_image]({{< ref \\"movie/movie_has_image.md\\" >}})
+    {{% children %}}
     "
 `;

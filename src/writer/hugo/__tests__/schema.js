@@ -19,10 +19,12 @@ describe('generateSchema', () => {
     expect.assertions(2);
     await generateSchema(movieSchema, '/memory/hugo');
 
-    expect(fs.existsSync('/memory/hugo/movie/movie.md', 'utf8')).toBe(true);
-    expect(fs.existsSync('/memory/hugo/movie/movie_has_image.md', 'utf8')).toBe(
+    expect(fs.existsSync('/memory/hugo/movie/tables/movie.md', 'utf8')).toBe(
       true,
     );
+    expect(
+      fs.existsSync('/memory/hugo/movie/tables/movie_has_image.md', 'utf8'),
+    ).toBe(true);
   });
 
   test('an _index.md is generated and valid', async () => {

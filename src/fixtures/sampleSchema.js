@@ -2,6 +2,7 @@
 
 import Schema from '../model/Schema';
 import Table from '../model/Table';
+import View from '../model/View';
 import Column from '../model/Column';
 import Index from '../model/Index';
 import Connection from '../model/Connection';
@@ -118,6 +119,21 @@ const movieHasImageTable = new Table(
 );
 
 movieSchema.setTables([movieTable, movieHasImageTable]);
+
+const activeMoviesView = new View(
+  'movie',
+  'active_movie',
+  [
+    new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
+    new Column('id', 'bigint', null, 'true'),
+    new Column('gid', 'global_id', null, 'true'),
+    new Column('title', 'text', null, 'true'),
+    new Column('id_poster', 'bigint', null, 'true'),
+  ],
+  `SELECT movie.gid,\n    movie.id,\n    movie_localized.locale,\n    COALESCE(movie_localized.title, movie.title) AS title,\n    movie.title AS original_title,\n    movie.id_poster\n    FROM movie.movie ON\n    WHERE movie.active`,
+);
+
+movieSchema.setViews([activeMoviesView]);
 
 const imageTable = new Table(
   'media',

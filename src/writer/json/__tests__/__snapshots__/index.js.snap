@@ -34,7 +34,8 @@ exports[`jsonwritter standard JSON output 1`] = `
           \\"media.image\\"
         ]
       }
-    ]
+    ],
+    \\"views\\": []
   },
   {
     \\"name\\": \\"movie\\",
@@ -186,6 +187,45 @@ exports[`jsonwritter standard JSON output 1`] = `
         ],
         \\"childTables\\": []
       }
+    ],
+    \\"views\\": [
+      {
+        \\"schemaName\\": \\"movie\\",
+        \\"name\\": \\"active_movie\\",
+        \\"columns\\": [
+          {
+            \\"name\\": \\"data\\",
+            \\"type\\": \\"jsonb\\",
+            \\"defaultValue\\": \\"'{}'::jsonb\\",
+            \\"notNull\\": \\"false\\"
+          },
+          {
+            \\"name\\": \\"id\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": \\"true\\"
+          },
+          {
+            \\"name\\": \\"gid\\",
+            \\"type\\": \\"global_id\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": \\"true\\"
+          },
+          {
+            \\"name\\": \\"title\\",
+            \\"type\\": \\"text\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": \\"true\\"
+          },
+          {
+            \\"name\\": \\"id_poster\\",
+            \\"type\\": \\"bigint\\",
+            \\"defaultValue\\": null,
+            \\"notNull\\": \\"true\\"
+          }
+        ],
+        \\"definition\\": \\"SELECT movie.gid,\\\\n    movie.id,\\\\n    movie_localized.locale,\\\\n    COALESCE(movie_localized.title, movie.title) AS title,\\\\n    movie.title AS original_title,\\\\n    movie.id_poster\\\\n    FROM movie.movie ON\\\\n    WHERE movie.active\\"
+      }
     ]
   },
   {
@@ -285,7 +325,8 @@ exports[`jsonwritter standard JSON output 1`] = `
         ],
         \\"childTables\\": []
       }
-    ]
+    ],
+    \\"views\\": []
   }
 ]"
 `;

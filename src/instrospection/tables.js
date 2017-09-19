@@ -2,7 +2,7 @@
 import getTableInfo from './getTableInfo';
 import getColumns from './columns';
 import getIndexes from './indexes';
-import getReferences from './references';
+import getForeignKeys from './foreignKeys';
 import getReferencedBy from './referencedBy';
 import getTriggers from './triggers';
 
@@ -26,7 +26,7 @@ ORDER BY 2, 3;`);
       const tableParts = Promise.all([
         getColumns(pool, rawTable.oid),
         getIndexes(pool, rawTable.oid),
-        getReferences(
+        getForeignKeys(
           pool,
           rawTable.oid,
           rawTable.schema_name,

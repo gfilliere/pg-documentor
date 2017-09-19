@@ -53,7 +53,7 @@ const renderFK = refs =>
     'Foreign-key constraints',
     refs,
     (ref: Connection) =>
-      `${linkToTable(ref.referee, ref.connectionName)}: ${ref.definition}`,
+      `${linkToTable(ref.referer, ref.connectionName)}: ${ref.definition}`,
   );
 
 const renderReferences = refs =>
@@ -62,7 +62,7 @@ const renderReferences = refs =>
     refs,
     (ref: Connection) =>
       `TABLE ${linkToTable(
-        ref.referer,
+        ref.referee,
       )} CONSTRAINT __${ref.connectionName}__: ${ref.definition}`,
   );
 

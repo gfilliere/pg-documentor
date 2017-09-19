@@ -1,14 +1,22 @@
 {
   "name": "pg-documentor",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.2",
+  "homepage": "https://github.com/gfilliere/pg-documentor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfilliere/pg-documentor.git"
+  },
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "dev": "babel-node src/index.js",
-    "test": "jest src/",
-    "build": "babel src --out-dir dist --copy-files",
+    "jest": "jest src/",
+    "test": "npm run jest && npm run flow-check && npm run lint",
+    "build": "babel src --out-dir dist",
     "lint": "eslint src/",
-    "flow-check": "flow check src"
+    "flow-check": "flow check src",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "commander": "^2.11.0",

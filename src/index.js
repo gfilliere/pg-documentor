@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // @flow
 import dotenv from 'dotenv';
 import program from 'commander';
@@ -35,10 +37,7 @@ try {
   dotenv.config();
   buildIntrospection(
     {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      port: process.env.DB_PORT,
-      database: process.env.DB_DATABASE,
+      connectionString: process.env.DB_CONNECTION_STRING,
     },
     program.ignoredSchemas,
   )

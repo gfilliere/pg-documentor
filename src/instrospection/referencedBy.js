@@ -12,14 +12,14 @@ export default (
   getTableInfo(
     pool,
     `
-SELECT conrelid::pg_catalog.regclass as connection, conname as name, 
-  pg_catalog.pg_get_constraintdef(r.oid, true) as definition
-FROM pg_catalog.pg_constraint r
-WHERE r.conrelid = '${oid}' AND r.contype = 'f' ORDER BY 1;`,
+SELECT conrelid::pg_catalog.regclass as connection, conname as name,
+  pg_catalog.pg_get_constraintdef(c.oid, true) as definition
+FROM pg_catalog.pg_constraint c
+WHERE c.confrelid = '${oid}' AND c.contype = 'f' ORDER BY 1;`,
     raw =>
       new Connection(
-        raw.connection,
         `${schemaName}.${tableName}`,
+        raw.connection,
         raw.name,
         raw.definition,
       ),

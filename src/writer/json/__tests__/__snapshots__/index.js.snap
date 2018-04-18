@@ -5,6 +5,7 @@ exports[`jsonwritter standard JSON output 1`] = `
   {
     \\"name\\": \\"abstract\\",
     \\"owner\\": \\"postgres\\",
+    \\"comment\\": \\"\\",
     \\"tables\\": [
       {
         \\"schemaName\\": \\"abstract\\",
@@ -40,6 +41,7 @@ exports[`jsonwritter standard JSON output 1`] = `
   {
     \\"name\\": \\"movie\\",
     \\"owner\\": \\"postgres\\",
+    \\"comment\\": \\"This is the movie schema\\",
     \\"tables\\": [
       {
         \\"schemaName\\": \\"movie\\",
@@ -231,6 +233,7 @@ exports[`jsonwritter standard JSON output 1`] = `
   {
     \\"name\\": \\"media\\",
     \\"owner\\": \\"postgres\\",
+    \\"comment\\": \\"This is the media schema\\",
     \\"tables\\": [
       {
         \\"schemaName\\": \\"media\\",

@@ -8,9 +8,9 @@ import Index from '../model/Index';
 import Connection from '../model/Connection';
 import Trigger from '../model/Trigger';
 
-const abstractSchema = new Schema('abstract', 'postgres');
-const movieSchema = new Schema('movie', 'postgres');
-const mediaSchema = new Schema('media', 'postgres');
+const abstractSchema = new Schema('abstract', 'postgres', '');
+const movieSchema = new Schema('movie', 'postgres', 'This is the movie schema');
+const mediaSchema = new Schema('media', 'postgres', 'This is the media schema');
 
 const elementTable = new Table(
   'abstract',

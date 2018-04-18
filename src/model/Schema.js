@@ -5,11 +5,13 @@ import type View from './View';
 export default class Schema {
   name: string;
   owner: string;
+  comment: string;
   tables: Array<Table>;
   views: Array<View>;
-  constructor(name: string, owner: string) {
+  constructor(name: string, owner: string, comment: string) {
     this.name = name;
     this.owner = owner;
+    this.comment = comment;
     this.tables = [];
     this.views = [];
   }

@@ -15,6 +15,7 @@ const mediaSchema = new Schema('media', 'postgres', 'This is the media schema');
 const elementTable = new Table(
   'abstract',
   'element',
+  '',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -32,6 +33,7 @@ abstractSchema.setTables([elementTable]);
 const movieTable = new Table(
   'movie',
   'movie',
+  'A movie object',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -83,6 +85,7 @@ const movieTable = new Table(
 const movieHasImageTable = new Table(
   'movie',
   'movie_has_image',
+  'A movie has multiple images',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -138,6 +141,7 @@ movieSchema.setViews([activeMoviesView]);
 const imageTable = new Table(
   'media',
   'image',
+  '',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),

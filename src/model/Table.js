@@ -7,6 +7,7 @@ import type Trigger from './Trigger';
 export default class Table {
   schemaName: string;
   name: string;
+  comment: string;
   columns: Array<Column>;
   indexes: Array<Index>;
   hasReferencesTo: Array<Connection>;
@@ -17,6 +18,7 @@ export default class Table {
   constructor(
     schemaName: string,
     name: string,
+    comment: string,
     columns: Array<Column>,
     indexes: Array<Index>,
     hasReferencesTo: Array<Connection>,
@@ -27,6 +29,7 @@ export default class Table {
   ) {
     this.schemaName = schemaName;
     this.name = name;
+    this.comment = comment;
     this.columns = columns;
     this.indexes = indexes;
     this.hasReferencesTo = hasReferencesTo;

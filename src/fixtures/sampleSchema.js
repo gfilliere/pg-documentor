@@ -126,6 +126,7 @@ movieSchema.setTables([movieTable, movieHasImageTable]);
 const activeMoviesView = new View(
   'movie',
   'active_movie',
+  'List only active movies',
   [
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
     new Column('id', 'bigint', null, 'true'),

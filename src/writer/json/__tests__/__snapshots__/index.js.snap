@@ -10,6 +10,7 @@ exports[`jsonwritter standard JSON output 1`] = `
       {
         \\"schemaName\\": \\"abstract\\",
         \\"name\\": \\"element\\",
+        \\"comment\\": \\"\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -46,6 +47,7 @@ exports[`jsonwritter standard JSON output 1`] = `
       {
         \\"schemaName\\": \\"movie\\",
         \\"name\\": \\"movie\\",
+        \\"comment\\": \\"A movie object\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -128,6 +130,7 @@ exports[`jsonwritter standard JSON output 1`] = `
       {
         \\"schemaName\\": \\"movie\\",
         \\"name\\": \\"movie_has_image\\",
+        \\"comment\\": \\"A movie has multiple images\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",
@@ -194,6 +197,7 @@ exports[`jsonwritter standard JSON output 1`] = `
       {
         \\"schemaName\\": \\"movie\\",
         \\"name\\": \\"active_movie\\",
+        \\"comment\\": \\"List only active movies\\",
         \\"columns\\": [
           {
             \\"name\\": \\"data\\",
@@ -238,6 +242,7 @@ exports[`jsonwritter standard JSON output 1`] = `
       {
         \\"schemaName\\": \\"media\\",
         \\"name\\": \\"image\\",
+        \\"comment\\": \\"\\",
         \\"columns\\": [
           {
             \\"name\\": \\"active\\",

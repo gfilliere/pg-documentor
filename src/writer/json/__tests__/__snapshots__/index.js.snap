@@ -15,12 +15,14 @@ exports[`jsonwritter standard JSON output 1`] = `
           {
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"false\\",
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
             \\"notNull\\": \\"false\\"
           }
@@ -52,36 +54,42 @@ exports[`jsonwritter standard JSON output 1`] = `
           {
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"false\\",
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
             \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"gid\\",
             \\"type\\": \\"global_id\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"title\\",
             \\"type\\": \\"text\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"id_poster\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           }
@@ -135,30 +143,35 @@ exports[`jsonwritter standard JSON output 1`] = `
           {
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"false\\",
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
             \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id_movie\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"id_image\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"rank\\",
             \\"type\\": \\"integer\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           }
@@ -202,30 +215,35 @@ exports[`jsonwritter standard JSON output 1`] = `
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
             \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"gid\\",
             \\"type\\": \\"global_id\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"title\\",
             \\"type\\": \\"text\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"id_poster\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           }
@@ -247,42 +265,49 @@ exports[`jsonwritter standard JSON output 1`] = `
           {
             \\"name\\": \\"active\\",
             \\"type\\": \\"boolean\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"false\\",
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"data\\",
             \\"type\\": \\"jsonb\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": \\"'{}'::jsonb\\",
             \\"notNull\\": \\"false\\"
           },
           {
             \\"name\\": \\"id\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"gid\\",
             \\"type\\": \\"global_id\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"title\\",
             \\"type\\": \\"text\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"alt\\",
             \\"type\\": \\"text\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           },
           {
             \\"name\\": \\"path\\",
             \\"type\\": \\"bigint\\",
+            \\"comment\\": \\"\\",
             \\"defaultValue\\": null,
             \\"notNull\\": \\"true\\"
           }

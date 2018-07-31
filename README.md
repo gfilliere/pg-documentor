@@ -17,7 +17,7 @@ yarn global add pg-documentor
 
 Create a .env file in the folder you'll be running the script, containing a PostgreSQL connection string as accepted by [pg-connection-string](https://github.com/iceddev/pg-connection-string)
 ```
-DB_CONNECTION_STRING='postgresql://ac_read@vip-pub-sql-b2b.allocine.net:6432/dbz'
+DB_CONNECTION_STRING='postgresql://user@uri:PORT/db_name'
 ```
 
 ### Usage :

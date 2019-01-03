@@ -24,7 +24,7 @@ export default (schema: Schema, destination: string) => {
   fs.writeFileSync(
     path.join(schemaDirectory, '_index.md'),
     `${frontmatter}
-    {{% children %}}
+{{% children %}}
     `,
     'utf8',
   );

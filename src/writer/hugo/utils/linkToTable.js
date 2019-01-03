@@ -17,5 +17,5 @@ export default function linkToTable(
     ({ schemaName, name } = table);
   }
   return `[${text ||
-    `${schemaName}.${name}`}]({{< ref "${schemaName}/tables/${name}.md" >}})`;
+    `${schemaName}.${name}`}]({{< ref "/${schemaName}/tables/${name}.md" >}})`;
 }

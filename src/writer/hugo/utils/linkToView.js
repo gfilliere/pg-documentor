@@ -14,5 +14,5 @@ export default function linkToview(view: View | string, text: ?string = null) {
     ({ schemaName, name } = view);
   }
   return `[${text ||
-    `${schemaName}.${name}`}]({{< ref "${schemaName}/views/${name}.md" >}})`;
+    `${schemaName}.${name}`}]({{< ref "/${schemaName}/views/${name}.md" >}})`;
 }

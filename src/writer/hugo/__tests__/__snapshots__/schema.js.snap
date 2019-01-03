@@ -7,6 +7,6 @@ description = \\"Content of the movie schema\\"
 alwaysopen = false
 +++
 
-    {{% children %}}
+{{% children %}}
     "
 `;

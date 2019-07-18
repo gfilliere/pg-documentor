@@ -10,7 +10,8 @@ const getViews = async (pool: any, schema: Schema) => {
 SELECT c.oid,
   n.nspname as schema_name,
   c.relname as table_name,
-  c.relkind
+  c.relkind,
+  pg_catalog.obj_description(c.oid, 'pg_class') AS "comment"
 FROM pg_catalog.pg_class c
      LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
 WHERE n.nspname ~ '^(${schema.name})$'
@@ -33,6 +34,7 @@ ORDER BY 2, 3;`);
       return new View(
         rawView.schema_name,
         rawView.table_name,
+        rawView.comment,
         columns,
         definitions[0],
       );

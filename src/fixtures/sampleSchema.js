@@ -8,13 +8,14 @@ import Index from '../model/Index';
 import Connection from '../model/Connection';
 import Trigger from '../model/Trigger';
 
-const abstractSchema = new Schema('abstract', 'postgres');
-const movieSchema = new Schema('movie', 'postgres');
-const mediaSchema = new Schema('media', 'postgres');
+const abstractSchema = new Schema('abstract', 'postgres', '');
+const movieSchema = new Schema('movie', 'postgres', 'This is the movie schema');
+const mediaSchema = new Schema('media', 'postgres', 'This is the media schema');
 
 const elementTable = new Table(
   'abstract',
   'element',
+  '',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -32,6 +33,7 @@ abstractSchema.setTables([elementTable]);
 const movieTable = new Table(
   'movie',
   'movie',
+  'A movie object',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -83,6 +85,7 @@ const movieTable = new Table(
 const movieHasImageTable = new Table(
   'movie',
   'movie_has_image',
+  'A movie has multiple images',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
@@ -123,6 +126,7 @@ movieSchema.setTables([movieTable, movieHasImageTable]);
 const activeMoviesView = new View(
   'movie',
   'active_movie',
+  'List only active movies',
   [
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
     new Column('id', 'bigint', null, 'true'),
@@ -138,6 +142,7 @@ movieSchema.setViews([activeMoviesView]);
 const imageTable = new Table(
   'media',
   'image',
+  '',
   [
     new Column('active', 'boolean', 'false', 'true'),
     new Column('data', 'jsonb', `'{}'::jsonb`, 'false'),
